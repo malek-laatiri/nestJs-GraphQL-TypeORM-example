@@ -1,6 +1,7 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { Category } from 'src/category/entities/category.entity';
 import { Project } from 'src/project/entities/project.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
 @Entity()
@@ -34,4 +35,10 @@ export class Employee {
   @Column({ nullable: true })
   @Field({ nullable: true })
   projectId:number
+
+
+
+  @OneToMany(() => Category, (category) => category.employee)
+  @Field(() => [Category],{nullable:true})//important to be array
+  categories: Category[];
 }

@@ -18,12 +18,14 @@ export class ProjectService {
 
   findAll(): Promise<Project[]> {
     return this.projectRepository.find({
-      relations:["employees"]
+      relations:["employees","employees.categories"]
     });
   }
 
   findOne(id: number): Promise<Project> {
-    return this.projectRepository.findOne(id);
+    return this.projectRepository.findOne(id,{
+      relations:["employees"]
+    });
   }
 
   update(id: number, updateProjectInput: UpdateProjectInput) {

@@ -17,6 +17,7 @@ export class Project {
   @Column()
   code: number;
 
+  
   @OneToMany(() => Employee, (employee) => employee.project)
   @Field(() => [Employee],{nullable:true})//important to be array
   employees: Employee[];

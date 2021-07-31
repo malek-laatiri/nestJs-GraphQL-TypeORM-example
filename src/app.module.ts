@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EmployeeModule } from './employee/employee.module';
 import { ProjectModule } from './project/project.module';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [EmployeeModule, GraphQLModule.forRoot(
@@ -24,7 +25,8 @@ import { ProjectModule } from './project/project.module';
       synchronize: true
 
     }),
-    ProjectModule],
+    ProjectModule,
+    CategoryModule],
   controllers: [AppController],
   providers: [AppService],
 })

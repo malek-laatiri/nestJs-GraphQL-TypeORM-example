@@ -2,6 +2,13 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Category {
+  id: Float!
+  name: String!
+  employee: Employee!
+  employeeId: Float
+}
+
 type Project {
   id: Float!
   name: String!
@@ -17,6 +24,7 @@ type Employee {
   city: String
   project: Project!
   projectId: Float
+  categories: [Category!]
 }
 
 type Query {
@@ -24,6 +32,7 @@ type Query {
   findOneEmployee(id: Int!): Employee!
   findAllProjects: [Project!]!
   findOneProject(id: Int!): Project!
+  category(id: Int!): Category!
 }
 
 type Mutation {
@@ -33,6 +42,9 @@ type Mutation {
   createProject(createProjectInput: CreateProjectInput!): Project!
   updateProject(updateProjectInput: UpdateProjectInput!): Project!
   removeProject(id: Int!): Project!
+  createCategory(createCategoryInput: CreateCategoryInput!): Category!
+  updateCategory(updateCategoryInput: UpdateCategoryInput!): Category!
+  removeCategory(id: Int!): Category!
 }
 
 input CreateEmployeeInput {
@@ -59,4 +71,15 @@ input UpdateProjectInput {
   name: String!
   code: Int!
   id: Float!
+}
+
+input CreateCategoryInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateCategoryInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }

@@ -17,7 +17,9 @@ export class ProjectService {
   }
 
   findAll(): Promise<Project[]> {
-    return this.projectRepository.find();
+    return this.projectRepository.find({
+      relations:["employees"]
+    });
   }
 
   findOne(id: number): Promise<Project> {

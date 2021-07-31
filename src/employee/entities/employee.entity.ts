@@ -1,10 +1,10 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Project } from 'src/project/entities/project.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
 @Entity()
 export class Employee {
-  
   @Field()
   @PrimaryGeneratedColumn('increment')
   id: number;
@@ -21,7 +21,17 @@ export class Employee {
   @Column()
   designation: string;
 
-  @Field({nullable:true})
-  @Column({nullable:true})
+  @Field({ nullable: true })
+  @Column({ nullable: true })
   city: string;
+
+  
+  @ManyToOne(() => Project, (project) => project.employees)
+  @Field(() => Project)
+
+  project: Project;
+
+  @Column({ nullable: true })
+  @Field({ nullable: true })
+  projectId:number
 }

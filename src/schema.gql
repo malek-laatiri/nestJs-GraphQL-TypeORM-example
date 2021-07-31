@@ -2,18 +2,21 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Project {
+  id: Float!
+  name: String!
+  code: Int!
+  employees: [Employee!]
+}
+
 type Employee {
   id: Float!
   firstname: String!
   lastname: String!
   designation: String!
   city: String
-}
-
-type Project {
-  id: Float!
-  name: String!
-  code: Int!
+  project: Project!
+  projectId: Float
 }
 
 type Query {
@@ -40,11 +43,11 @@ input CreateEmployeeInput {
 }
 
 input UpdateEmployeeInput {
-  firstname: String
-  lastname: String
-  designation: String
+  firstname: String!
+  lastname: String!
+  designation: String!
   city: String
-  id: Int!
+  id: Float!
 }
 
 input CreateProjectInput {

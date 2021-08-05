@@ -28,11 +28,12 @@ export class ProjectService {
     });
   }
 
-  update(id: number, updateProjectInput: UpdateProjectInput) {
-    return `This action updates a #${id} project`;
+  
+  async update(id: string, updateProjectInput: UpdateCategoryInput):Promise<any> {
+    return await this.projectRepository.findByIdAndUpdate(id,updateProjectInput,{new:true})
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} project`;
+ async remove(_id: string):Promise<any> {
+    return await this.projectRepository.findByIdAndRemove(_id);
   }
 }
